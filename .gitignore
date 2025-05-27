@@ -1,0 +1,49 @@
+# Binaries for programs and plugins
+*.exe
+*.exe~
+*.dll
+*.so
+*.dylib
+*.test
+*.out
+
+# Output of the go coverage tool, specifically when used with LiteIDE
+*.coverprofile
+
+# Dependency directories (remove the comment below if you use Go modules)
+/vendor/
+
+# Go workspace file
+go.work
+
+# IDE and editor folders/files
+.vscode/
+.idea/
+*.iml
+
+# Vim files
+*.swp
+*.swo
+*.vim
+
+# MacOS files
+.DS_Store
+
+# Logs
+*.log
+
+# Build directories
+bin/
+
+# GoLand specific
+.goland*
+
+# Test binary
+main.test
+
+# Coverage files
+coverage.out
+
+.DS_Store
+.idea/
+
