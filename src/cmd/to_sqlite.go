@@ -168,8 +168,8 @@ func main() {
 	// Get source and destination directories from the flags passed
 	var sourceDir string
 	var destDir string
-	flag.StringVar(&sourceDir, "source-dir", "", "Directory containing CSV files")
-	flag.StringVar(&destDir, "dest-dir", "", "Directory containing SQLite db")
+	flag.StringVar(&sourceDir, "src", "", "Directory containing CSV files")
+	flag.StringVar(&destDir, "dest", "", "Directory containing SQLite db")
 	flag.Parse()
 
 	if sourceDir == "" || destDir == "" {
@@ -177,11 +177,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	databaseFilePath := fmt.Sprintf("%s/%s.db", destDir, "partners.db")
-
-	// Define the directory containing CSV files and the SQLite database file
-	csvDir := "./csv_files" // Create this directory and put your CSVs here
-	dbFile := "my_database.db"
+	databaseFilePath := fmt.Sprintf("%s/%s.db", destDir, "combined.db")
 
 	// Open (or create) the SQLite database
 	db, err := sql.Open("sqlite3", databaseFilePath)
@@ -198,10 +194,10 @@ func main() {
 		fmt.Printf("Error connecting to database: %v\n", err)
 		return
 	}
-	fmt.Printf("Successfully connected to SQLite database: %s\n", dbFile)
+	fmt.Printf("Successfully connected to SQLite database: %s\n", databaseFilePath)
 
 	// Read all CSV files in the specified directory
-	files, err := os.ReadDir(csvDir)
+	files, err := os.ReadDir(sourceDir)
 	if err != nil {
 		fmt.Printf("Error reading CSV directory: %v\n", err)
 		return
@@ -209,7 +205,7 @@ func main() {
 
 	for _, fileInfo := range files {
 		if !fileInfo.IsDir() && strings.HasSuffix(fileInfo.Name(), ".csv") {
-			filePath := filepath.Join(csvDir, fileInfo.Name())
+			filePath := filepath.Join(sourceDir, fileInfo.Name())
 			err := processCSVFile(db, filePath)
 			if err != nil {
 				fmt.Printf("Error processing %s: %v\n", filePath, err)

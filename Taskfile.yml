@@ -1,0 +1,17 @@
+version: '3'
+tasks:
+  build_to_xlsx:
+    desc: Build the CSV to XLSX cli
+    cmds:
+      - go build -o bin/to_xlsx src/cmd/to_xlsx.go
+
+  build_to_sqlite:
+    desc: Build the CSV to XLSX cli
+    cmds:
+      - go build -o bin/to_sqlite src/cmd/to_sqlite.go
+
+  lint:
+    desc: Lint the code
+    cmds:
+      - golangci-lint run
+

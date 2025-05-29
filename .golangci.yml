@@ -1,0 +1,6 @@
+linters:
+ default: all
+run:
+  timeout: 5m
+
+version: 2
