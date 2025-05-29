@@ -10,6 +10,7 @@ import (
 	"path/filepath"
 	"regexp"
 	"strings"
+	"time"
 
 	_ "github.com/mattn/go-sqlite3" // SQLite driver
 )
@@ -176,8 +177,8 @@ func main() {
 		fmt.Println("sourceDir and destDir are required")
 		os.Exit(1)
 	}
-
-	databaseFilePath := fmt.Sprintf("%s/%s.db", destDir, "combined.db")
+	timestamp := fmt.Sprintf("%d", time.Now().Unix())
+	databaseFilePath := fmt.Sprintf("%s/%s_%s.db", destDir, timestamp, "combined")
 
 	// Open (or create) the SQLite database
 	db, err := sql.Open("sqlite3", databaseFilePath)
