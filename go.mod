@@ -5,6 +5,7 @@ go 1.24
 require github.com/xuri/excelize/v2 v2.9.1 // indirect
 
 require (
+	github.com/mattn/go-sqlite3 v1.14.28 // indirect
 	github.com/richardlehane/mscfb v1.0.4 // indirect
 	github.com/richardlehane/msoleps v1.0.4 // indirect
 	github.com/tiendc/go-deepcopy v1.6.0 // indirect
