@@ -3,17 +3,14 @@
 ### Dependencies
 
 - Go version 1.24.x
-- ```bash 
-     brew install go-task/tap/go-task 
-  ```
-- ```bash 
-  brew install golangci-lint
-    brew upgrade golangci-lint
+- ```bash
+     brew update
+     brew install go-task/tap/go-task golangci-lint
   ```
 
 ## Merge multiple csv files into a single xlsx file
 ```bash
-go build -o bin/to_xlsx src/cmd/to_xlsx.go
+task build_to_xlsx
 ```
 
 ## Example CLI signature
@@ -23,7 +20,7 @@ go build -o bin/to_xlsx src/cmd/to_xlsx.go
 
 ## Import multiple csv files into a single sqlite3 database file
 ```bash
-go build -o bin/to_sqlite src/cmd/to_sqlite.go
+task build_to_sqlite
 ```
 
 ## Example CLI signature
